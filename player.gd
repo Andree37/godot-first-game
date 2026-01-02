@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		velocity.x -= 1;
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1;
-	
+
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed;
 		$AnimatedSprite2D.play();
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 
 	position += velocity * delta;
 	position = position.clamp(Vector2.ZERO, screen_size);
-	
+
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk";
 		$AnimatedSprite2D.flip_v = false;

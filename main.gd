@@ -33,18 +33,18 @@ func start_game() -> void:
 
 func _on_mob_timer_timeout() -> void:
 	var mob = mob_scene.instantiate();
-	
+
 	var mob_spawn_location = $MobPath/MobSpawnLocation;
 	mob_spawn_location.progress_ratio = randf(); # Choose a random location on Path2D.
-	
+
 	mob.position = mob_spawn_location.position;
-	
+
 	var direction = mob_spawn_location.rotation + PI / 2 # Set the mob's direction perpendicular to the path direction.
-	
+
 	# Add some randomness to the direction.
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
-	
+
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0);
 	mob.linear_velocity = velocity.rotated(direction);
 
